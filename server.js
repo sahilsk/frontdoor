@@ -1,6 +1,9 @@
 var bouncy = require('bouncy');
 var domain = require("domain");
+var config = require("./config.js");
 var findHost = require("./findHost");
+
+
 var d = domain.create();
 
 d.on("error", function(err){
