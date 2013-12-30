@@ -8,24 +8,27 @@ d.on("error", function(err){
 });
 
 var proxyBouncy = bouncy(requestHandler);
-proxyBouncy.listen(7050);
+console.log("proxy listening at " , config.port);
+proxyBouncy.listen(config.port);
 
 
 function requestHandler(req, res, bounce){
     
     d.run( function(){
         findHost(req, function(error, newHost){
-           console.log("finding new host");           
-           if (req.headers.host === 'beep.example.com') {
-                bounce(8001);
-           }
-           else if (req.headers.host === 'boop.example.com') {
-                bounce(8002);
-           }
-           else {
-               res.statusCode = 404;
-               res.end('no such host');
-           }       
+           console.log("finding new host");     
+        if( error){
+            console.log("Error");
+            res.statusCode = 404;
+            res.end('no such host exist');          
+        }else if( newHost === 0){
+            console.log("No host found");
+            res.statusCode = 404;
+            res.end('no such host exist');            
+        }else {
+            console.log("bouncing to " + newHost);
+            bounce( newHost);
+        }
        });
     });    
     
