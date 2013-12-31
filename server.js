@@ -8,12 +8,12 @@ var d = domain.create();
 
 d.on("error", function(err){
     console.error("Caught Error!", err);
+    d.dispose();
 });
 
 var proxyBouncy = bouncy(requestHandler);
 console.log("proxy listening at " , config.port);
 proxyBouncy.listen(config.port);
-
 
 function requestHandler(req, res, bounce){
     
