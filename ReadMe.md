@@ -14,7 +14,12 @@ Open config.js and write your redis server connection information:
     }
 
 ```
+<<<<<<< HEAD
  
+=======
+
+
+>>>>>>> 1ac1bc5c777775c5f2643fd59fe1b59d1dd75e7e
  
  ##To insert new frontdoor entry( url_to_map => mapped_url )
  ```
