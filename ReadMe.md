@@ -16,11 +16,6 @@ Open config.js and write your redis server connection information:
 ```
 
 
-```
- rpush frontend:*.runnable.pw frontdoor
- rpush frontend:*.runnable.pw http://50.18.15.145:7050
- ```
- 
  
  ##To insert new frontdoor entry( url_to_map => mapped_url )
  ```
