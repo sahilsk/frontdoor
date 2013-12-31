@@ -5,6 +5,7 @@ function findHost(req, oResult){
     
     console.log( config.redis.development.port);
     var rdsClient = redis.createClient(config.redis.development.port, config.redis.development.hostname);
+    rdsClient.setMaxListeners(0);
     
     var reqHost = req.headers.host;
     
